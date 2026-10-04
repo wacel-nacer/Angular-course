@@ -1,0 +1,38 @@
+<div class="layout">
+  <section class="liste">
+    <h2>Conférences disponibles</h2>
+    <ul>
+      @for (conference of conferences(); track conference.id) {
+        <li>
+          <button
+            type="button"
+            class="item"
+            [class.active]="conference.id === selectedId()"
+            [attr.aria-pressed]="conference.id === selectedId()"
+            (click)="selectionner(conference)"
+          >
+            <span class="titre">{{ conference.titre }}</span>
+            <span class="meta">
+              {{ conference.date | date: 'd MMM y' }} · {{ conference.intervenant }}
+            </span>
+            <span class="places" [class.complet]="conference.placesDisponibles === 0">
+              {{
+                conference.placesDisponibles > 0
+                  ? conference.placesDisponibles + ' place(s)'
+                  : 'Complet'
+              }}
+            </span>
+          </button>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <!-- Composant enfant imbriqué : données en entrée, événements en sortie -->
+  <app-conference-detail
+    class="detail"
+    [conference]="selected()"
+    (inscription)="onInscription($event)"
+    (fermer)="onFermer()"
+  />
+</div>

@@ -1,0 +1,90 @@
+:host {
+  display: block;
+}
+
+.detail,
+.vide {
+  background: #fff;
+  border: 1px solid #e3e3ea;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.vide {
+  color: #6b6b7b;
+  text-align: center;
+  border-style: dashed;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme {
+  background: #f3e8ff;
+  color: #7e22ce;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.close {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #6b6b7b;
+}
+
+h2 {
+  margin: 0.75rem 0 0.5rem;
+}
+
+.description {
+  color: #44445a;
+}
+
+dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1rem;
+  margin: 1rem 0;
+}
+
+dt {
+  font-weight: 600;
+  color: #6b6b7b;
+}
+
+dd {
+  margin: 0;
+}
+
+.complet {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.inscrire {
+  background: #c026d3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.inscrire:disabled {
+  background: #d4d4dc;
+  cursor: not-allowed;
+}
+
+.message {
+  margin-top: 1rem;
+  color: #15803d;
+}

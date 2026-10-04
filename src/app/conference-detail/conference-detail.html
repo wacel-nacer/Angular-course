@@ -1,0 +1,41 @@
+@if (conference) {
+  <article class="detail">
+    <header>
+      <span class="theme">{{ conference.theme }}</span>
+      <button type="button" class="close" aria-label="Fermer le détail" (click)="onFermer()">×</button>
+    </header>
+
+    <h2>{{ conference.titre }}</h2>
+    <p class="description">{{ conference.description }}</p>
+
+    <dl>
+      <dt>Intervenant</dt>
+      <dd>{{ conference.intervenant }}</dd>
+      <dt>Date</dt>
+      <dd>{{ conference.date | date: "EEEE d MMMM y 'à' HH:mm" }}</dd>
+      <dt>Lieu</dt>
+      <dd>{{ conference.lieu }}</dd>
+      <dt>Places disponibles</dt>
+      <dd class="places" [class.complet]="conference.placesDisponibles === 0">
+        {{ conference.placesDisponibles > 0 ? conference.placesDisponibles : 'Complet' }}
+      </dd>
+    </dl>
+
+    <button
+      type="button"
+      class="inscrire"
+      [disabled]="conference.placesDisponibles === 0"
+      (click)="sInscrire()"
+    >
+      S'inscrire
+    </button>
+
+    @if (message) {
+      <p class="message" role="status">{{ message }}</p>
+    }
+  </article>
+} @else {
+  <div class="vide">
+    <p>Sélectionnez une conférence dans la liste pour afficher ses détails.</p>
+  </div>
+}
