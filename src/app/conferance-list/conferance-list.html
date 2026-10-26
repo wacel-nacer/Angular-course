@@ -1,22 +1,40 @@
-<h1>Conferences</h1>
-
-<div class="cards-container">
-  @for (conf of conferances; track $index) {
-    <div class="card">
-
-      <img
-        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87"
-        alt="Conference"
-      />
-
-      <div class="card-content">
-        <h2>{{ conf.name }}</h2>
-
-        <p>📅 {{ conf.date }}</p>
-        <p>📍 {{ conf.place }}</p>
-
-      </div>
-      <button [routerLink]="['/details', conf.id]">Details</button>
+<section class="page">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">HttpClient · API REST</p>
+      <h1>Conférences</h1>
+      <p>Les données sont chargées depuis JSON Server.</p>
+    </div>
+    <a class="primary-button" routerLink="/add-conference">+ Ajouter</a>
+  </div>
+  <div class="toolbar">
+    <label for="search">Rechercher</label>
+    <input id="search" type="search" [ngModel]="search()" (ngModelChange)="search.set($event)"
+      placeholder="Titre, lieu ou description..." />
+    <button type="button" class="secondary-button" (click)="loadConferences()">Actualiser</button>
+  </div>
+  @if (error()) { <p class="feedback error">{{ error() }}</p> }
+  @if (loading()) {
+    <p class="feedback">Chargement...</p>
+  } @else if (!filteredConferences().length) {
+    <p class="feedback">Aucune conférence trouvée.</p>
+  } @else {
+    <div class="cards-container">
+      @for (conf of filteredConferences(); track conf.id) {
+        <article class="card">
+          <div class="card-content">
+            <h2>{{ conf.title }}</h2>
+            <p>📅 {{ conf.date }}</p>
+            <p>📍 {{ conf.location }}</p>
+            <p>{{ conf.description }}</p>
+            <p>💳 {{ conf.price }} € · {{ conf.nbPlaces }} places</p>
+            <div class="card-actions">
+              <a class="secondary-button" [routerLink]="['/edit-conference', conf.id]">Modifier</a>
+              <button class="danger-button" type="button" (click)="deleteConference(conf)">Supprimer</button>
+            </div>
+          </div>
+        </article>
+      }
     </div>
   }
-</div>
+</section>

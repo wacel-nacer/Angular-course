@@ -19,14 +19,15 @@ apiUrl = 'http://localhost:3000/conferences';
     //return this.http.get<Conferance>(`${this.apiUrl}/${id}`);
   }
 
-  addConferance(conf: Conferance) {
+  addConferance(conf: Omit<Conferance, 'id'>) {
     return this.http.post<Conferance>(this.apiUrl, conf);
   }
 
+  updateConferance(id: number, conf: Omit<Conferance, 'id'>) {
+    return this.http.put<Conferance>(`${this.apiUrl}/${id}`, conf);
+  }
 
-
-// put delete To Do
-
-
-  
+  deleteConferance(id: number) {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

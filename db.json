@@ -1,23 +1,23 @@
 {
-    "conferances": [
+    "conferences": [
         {
             "id": 1,
-            "name": "Angular Connect",
-            "date": "9/26/2036",
-            "time": "10:00 am",
+            "title": "Angular Connect",
+            "date": "2036-09-26",
+            "description": "Conférence Angular et développement frontend.",
             "price": 599.99,
-            "imageUrl": "/assets/images/angularconnect-shield.png",
-            "location": "1 London Rd, London, UK"
+            "nbPlaces": 100,
+            "location": "London"
            
         },
         {
             "id": 2,
-            "name": "TypeScript Conference",
-            "date": "10/15/2036",
-            "time": "9:00 am",
+            "title": "TypeScript Conference",
+            "date": "2036-10-15",
+            "description": "Une conférence dédiée à TypeScript.",
             "price": 499.99,
-            "imageUrl": "/assets/images/typescriptconf-shield.png",
-            "location": "2 TypeScript Ave, TypeScript City, TS"
+            "nbPlaces": 80,
+            "location": "TypeScript City"
         }
     ]
 }
